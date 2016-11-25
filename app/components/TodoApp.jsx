@@ -12,17 +12,21 @@
        todos: [
          {
            id: uuid(),
-           text: 'Have faith'
+           text: 'Have faith',
+           completed: true
          }, {
            id: uuid(),
-           text: 'Code & Read'
+           text: 'Code & Read',
+           completed: false
          },{
            id: uuid() ,
-           text: 'Go to Gym'
+           text: 'Go to Gym',
+           completed: false
          },
          {
            id: uuid(),
-           text: 'Smoke some dank Weed'
+           text: 'Smoke some dank Weed',
+           completed: false
          }
        ]
      };
@@ -33,10 +37,22 @@
          ...this.state.todos,
          {
            id: uuid(),
-           text: text
+           text: text,
+           completed: false
          }
        ]
      });
+   },
+   handleToggle: function (id) {
+     var updatedTodos = this.state.todos.map((todo) => {
+       if (todo.id === id) {
+         todo.completed = !todo.completed;
+       }
+
+       return todo;
+     });
+
+     this.setState({todos: updatedTodos});
    },
    handleSearch: function (showCompleted, searchText) {
      this.setState({
@@ -49,7 +65,7 @@
     return (
       <div>
         <TodoSearch onSearch={this.handleSearch}/>
-        <TodoList todos={todos}/>
+        <TodoList todos={todos} onToggle={this.handleToggle}/>
         <AddToDo onAddTodo={this.handleAddTodo}/>
       </div>
     )
