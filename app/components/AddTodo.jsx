@@ -15,7 +15,7 @@
     },
     render: function () {
       return (
-        <div>
+        <div className="container__footer">
           <form onSubmit={this.handleSubmit}>
             <input type="text" ref="task" placeholder="What to do?"/>
             <button className="expanded button">Add Todo</button>

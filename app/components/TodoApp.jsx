@@ -56,9 +56,17 @@
      var filterTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
     return (
       <div>
-        <TodoSearch onSearch={this.handleSearch}/>
-        <TodoList todos={filterTodos} onToggle={this.handleToggle}/>
-        <AddToDo onAddTodo={this.handleAddTodo}/>
+        <h1 className="page-title">Get Your Shit Done!</h1>
+
+        <div className="row">
+          <div className="column small-centered small-11 medium-6 large-5">
+            <div className="container">
+              <TodoSearch onSearch={this.handleSearch}/>
+              <TodoList todos={filterTodos} onToggle={this.handleToggle}/>
+              <AddToDo onAddTodo={this.handleAddTodo}/>
+            </div>
+          </div>
+        </div>
       </div>
     )
    }
